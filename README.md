@@ -15,7 +15,7 @@ Consignes a suivre lors du developpement :
 	* commit aux étapes clés
 	* push après les commit pour que le contenu soit disponible pour tout le monde
 	* fusionné au master quand la tâche a fini d'être traitée
-* Si de nouveaux exécutables sont créés pendant le build, les ajouter au .gitignore
+* Modifier le .gitignore et le Makefile pour gérer les nouveaux fichiers ajoutés. /!\ aux exécutables générés automatiquement
 
 ##Installation
 

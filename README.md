@@ -11,6 +11,7 @@ Consignes a suivre lors du developpement :
 * Verifier/Modifier la categorie [issues](https://github.com/Sonny-Klotz/JeuDeTanks/issues) pour la liste de tâches : [Issues sur github](https://guides.github.com/features/issues)
 	* Lorsqu'une tâche est  terminée, le sujet se ferme directement dans la commit
 	* exemple: "Closed #17 - message" en tant que message du commit ferme automatiquement la tâche numéro 17
+	* supporte le [Markdown](https://guides.github.com/features/mastering-markdown/)
 * Créer une branche pour chaque tâche
 	* commit aux étapes clés
 	* push après les commit pour que le contenu soit disponible pour tout le monde

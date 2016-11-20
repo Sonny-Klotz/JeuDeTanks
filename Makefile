@@ -23,3 +23,4 @@ clean:
 
 distclean: clean
 	rm $(TARGET)/rapport/rapport.pdf
+	rm $(TARGET)/documentation

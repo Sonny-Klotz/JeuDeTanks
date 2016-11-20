@@ -37,4 +37,10 @@ Makefile*
 # QtCtreator CMake
 CMakeLists.txt.user*
 
+# Documentation
+target/documentation
+
+# Rapport LaTeX
+target/rapport
+
 #Executables

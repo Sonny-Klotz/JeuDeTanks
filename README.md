@@ -3,6 +3,10 @@
 ##Construction
 [Tuto makefile](http://gl.developpez.com/tutoriel/outil/makefile/)
 
+Rapport : make rapport (ouvre le document également)
+
+Documentation : make documentation (ouvre le document également)
+
 ##Développement
 Consignes a suivre lors du developpement :
 * Toujours documenter les fichiers ".h" au style [Doxygen](http://franckh.developpez.com/tutoriels/outils/doxygen/)
@@ -18,9 +22,11 @@ Consignes a suivre lors du developpement :
 	* fusionné au master quand la tâche a fini d'être traitée
 * Modifier le .gitignore et le Makefile pour gérer les nouveaux fichiers ajoutés. /!\ aux exécutables générés automatiquement
 
-##Installation
-
 ##Execution
+
+Rapport : make rapport
+
+Documentation : make documentation
 
 ##Utilisation
 

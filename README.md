@@ -8,19 +8,60 @@ Rapport : make rapport (ouvre le document également)
 Documentation : make documentation (ouvre le document également)
 
 ##Développement
-Consignes a suivre lors du developpement :
-* Toujours documenter les fichiers ".h" au style [Doxygen](http://franckh.developpez.com/tutoriels/outils/doxygen/)
-* Pour chaque classe ecrite, créer les tests unitaires pour les methodes :
-	[Vue d'ensemble](http://doc.qt.io/qt-5/qtest-overview.html) et [tutoriel](http://doc.qt.io/qt-5/qttestlib-tutorial1-example.html).
-* Verifier/Modifier la categorie [issues](https://github.com/Sonny-Klotz/JeuDeTanks/issues) pour la liste de tâches : [Issues sur github](https://guides.github.com/features/issues)
-	* Lorsqu'une tâche est  terminée, le sujet se ferme directement dans la commit
-	* exemple: "Closed #17 - message" en tant que message du commit ferme automatiquement la tâche numéro 17
-	* supporte le [Markdown](https://guides.github.com/features/mastering-markdown/)
-* Créer une branche pour chaque tâche
-	* commit aux étapes clés
-	* push après les commit pour que le contenu soit disponible pour tout le monde
-	* fusionné au master quand la tâche a fini d'être traitée
-* Modifier le .gitignore et le Makefile pour gérer les nouveaux fichiers ajoutés. /!\ aux exécutables générés automatiquement
+
+* Tank : 
+	* etat : detruit ou non
+	* coords : Point
+	* capacite : pour le deplacement (init a L/10)
+	* canon : angle et pivot
+	* obus : illimite type1, 10 t2 et 5 t3
+	* fonctions :
+	changer angles / tirer / deplacer / explosion.
+	Pour tirer et deplacer, on informe le terrain,
+	ce sera lui qu'il traite (vu qu'il a connaissace des
+	autres objets)
+
+* Obus : caracterise par son type
+	* type 1 : -2 resistance,  diametre impact 5 pixels
+	* type 2 : -5 resistance, 20 pixels
+	* type 3 : -10 resistance, 28 pixels
+
+* Segment : composé de deux Point
+
+* Obstacles : caracterise par degre resistance
+	* arbre 1 bloque le tank vert
+	* roche 7 bloque le tank gris
+	* crevasse -2 ne bloque pas retire de la capacite
+	* eau NMAX bloque le tank bleu
+
+* Terrain :
+	* taille : L*C  pixels
+	* { obstacles }
+	* fonctions :
+		* deplacer (verif obstacles)
+		* tirer (segment trajectoire, calcul Point impact,
+		 detruire a l'impact)
+
+* Joueur (classe de base) :
+	* individu et ordinateur (classes filles)
+	* fct principale  -> renvoie une commande
+	* cmd	
+		* 3 actions
+			* pivot
+			* angle tir
+			* tir obus 1-2 ou 3
+		* fleches : deplcement
+
+* main : 1 fenetre -> 3 boutons (1 par action du joueur) + terrain
+	* instanciation : terrain et joueurs
+	* label	: affiché sur le tank
+		* IA ou joueur + n° du joueur
+		* en evidence si c'et son tour
+		* capacite du tank
+	* deroulement du jeu (while au - 2 tanks en marche)
+		* on attend des commandes
+		* on les traite
+		* on passe a l'autre joueur quand obus tiré
 
 ##Execution
 

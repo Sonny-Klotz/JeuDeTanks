@@ -40,7 +40,7 @@ Documentation : make documentation (ouvre le document également)
 	* fonctions :
 		* deplacer (verif obstacles)
 		* tirer (segment trajectoire, calcul Point impact,
-		 detruire a l'impact)
+		 , deplace l'obus suivant la trajectoire, detruire a l'impact)
 
 * Joueur (classe de base) :
 	* individu et ordinateur (classes filles)

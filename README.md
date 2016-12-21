@@ -1,36 +1,35 @@
 #Jeu de tanks
 
+Une description brève.
+
 ##Construction
-[Tuto makefile](http://gl.developpez.com/tutoriel/outil/makefile/)
 
-Rapport : make rapport (ouvre le document également)
+Prérequis pour compiler : qmake=> "sudo apt-get install qt-sdk"
 
-Documentation : make documentation (ouvre le document également)
+* Compil appli : "make tankApp" (exécute les tests, s'ils passent, construit l'exécutable)
+* Compil tests : "make tests"
+* Rapport : "make rapport"
+* Documentation : "make documentation"
+* Nettoyage :
+	* "make clean" supprime les binaires '.o'
+	* "make distclean" nettoyage complet (supprime tous les fichiers construits à la compilation)
 
 ##Développement
 Consignes a suivre lors du developpement :
 * Toujours documenter les fichiers ".h" au style [Doxygen](http://franckh.developpez.com/tutoriels/outils/doxygen/)
 * Pour chaque classe ecrite, créer les tests unitaires pour les methodes :
-	[Vue d'ensemble](http://doc.qt.io/qt-5/qtest-overview.html) et [tutoriel](http://doc.qt.io/qt-5/qttestlib-tutorial1-example.html).
-* Verifier/Modifier la categorie [issues](https://github.com/Sonny-Klotz/JeuDeTanks/issues) pour la liste de tâches : [Issues sur github](https://guides.github.com/features/issues)
-	* Lorsqu'une tâche est  terminée, le sujet se ferme directement dans la commit
-	* exemple: "Closed #17 - message" en tant que message du commit ferme automatiquement la tâche numéro 17
-	* supporte le [Markdown](https://guides.github.com/features/mastering-markdown/)
-* Créer une branche pour chaque tâche
-	* commit aux étapes clés
-	* push après les commit pour que le contenu soit disponible pour tout le monde
-	* fusionné au master quand la tâche a fini d'être traitée
-* Modifier le .gitignore et le Makefile pour gérer les nouveaux fichiers ajoutés. /!\ aux exécutables générés automatiquement
+	* [Vue d'ensemble](http://doc.qt.io/qt-5/qtest-overview.html) et [tutoriel](http://doc.qt.io/qt-5/qttestlib-tutorial1-example.html).
+	* Ajouter un nouveau fichier au projet tests, utiliser le squelette
+* Modifier le .gitignore et le Makefile pour gérer les nouveaux fichiers ajoutés. [Tuto makefile](http://gl.developpez.com/tutoriel/outil/makefile/)
 
 ##Execution
 
-Rapport : make rapport
-
-Documentation : make documentation
+* Application : "make"
+* Tests : "make run-tests"
+* Rapport : "make rapport"
+* Documentation : "make documentation"
 
 ##Utilisation
-
-##Documentation
 
 ##Auteurs
 ###Florian Lienhardt

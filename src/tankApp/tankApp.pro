@@ -1,12 +1,23 @@
-QT += core
-QT -= gui
+#-------------------------------------------------
+#
+# Project created by QtCreator 2016-12-21T16:00:00
+#
+#-------------------------------------------------
 
-CONFIG += c++11
+QT       += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = tankApp
-CONFIG += console
-CONFIG -= app_bundle
-
 TEMPLATE = app
 
-SOURCES += main.cpp
+
+SOURCES += main.cpp\
+        point.cpp
+
+HEADERS  += point.h
+
+# Output
+DESTDIR = target/bin
+OBJECTS_DIR = target/bin
+MOC_DIR = src/tankApp

@@ -6,13 +6,16 @@ Une description brève.
 
 Prérequis pour compiler : qmake=> "sudo apt-get install qt-sdk"
 
-* Compil appli : "make tankApp" (exécute les tests, s'ils passent, construit l'exécutable)
+* Compil appli : "make"
 * Compil tests : "make tests"
-* Rapport : "make rapport"
-* Documentation : "make documentation"
 * Nettoyage :
 	* "make clean" supprime les binaires '.o'
 	* "make distclean" nettoyage complet (supprime tous les fichiers construits à la compilation)
+	
+##Execution
+
+* Application : "make run" // make run compile automatiquement si ce n'est pas deja fait
+* Tests : "make run-tests" // idem
 
 ##Développement
 
@@ -69,13 +72,6 @@ Prérequis pour compiler : qmake=> "sudo apt-get install qt-sdk"
 		* on attend des commandes
 		* on les traite
 		* on passe a l'autre joueur quand obus tiré
-
-##Execution
-
-* Application : "make"
-* Tests : "make run-tests"
-* Rapport : "make rapport"
-* Documentation : "make documentation"
 
 ##Utilisation
 

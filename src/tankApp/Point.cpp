@@ -1,4 +1,4 @@
-#include "point.h"
+#include "Point.h"
 
 Point::Point(const int x, const int y)
 {

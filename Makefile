@@ -1,6 +1,5 @@
 SRC=src
 TARGET=target
-NAVIGATEUR=google-chrome
 
 all:
 	qmake -makefile -o MakefileApp $(SRC)/tankApp/tankApp.pro
@@ -9,9 +8,13 @@ all:
 run: all
 	tankApp
 	
-tests:
-
-run-tests:
+tests: all
+	qmake -makefile -o MakefileTests $(SRC)/tests/tests.pro
+	moc -o testtankapp.moc $(SRC)/$@/TestTankApp.cpp 
+	make -f MakefileTests
+	
+run-tests: tests
+	$(TARGET)/bin-tests/tests
 
 .PHONY: all clean tests
 
@@ -23,4 +26,5 @@ distclean: clean
 # Fichiers générés à la compilation
 	rm -rf $(TARGET)
 	rm -f MakefileApp
+	rm -f MakefileTests
 	find . -name "*.moc" -type f -delete

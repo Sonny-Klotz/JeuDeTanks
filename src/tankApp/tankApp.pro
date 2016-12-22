@@ -13,9 +13,9 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        point.cpp
+        Point.cpp
 
-HEADERS  += point.h
+HEADERS  += Point.h
 
 # Output
 DESTDIR = target/bin

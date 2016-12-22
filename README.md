@@ -44,6 +44,7 @@ Documentation : make documentation (ouvre le document également)
 
 * Joueur (classe de base) :
 	* individu et ordinateur (classes filles)
+	* tank (le joueur a perdu si son tank est detruit)
 	* fct principale  -> renvoie une commande
 	* cmd	
 		* 3 actions

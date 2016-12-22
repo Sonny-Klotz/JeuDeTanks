@@ -19,6 +19,8 @@ Prérequis pour compiler : qmake=> "sudo apt-get install qt-sdk"
 
 ##Développement
 
+* Test : pour ajouter un test, il faut ajouter dans tests.pro le .cpp // et le include dans TestTankApp.cpp
+
 * Tank : 
 	* etat : detruit ou non
 	* coords : Point

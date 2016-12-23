@@ -17,10 +17,7 @@ Documentation : make documentation (ouvre le document également)
 	* obus : illimite type1, 10 t2 et 5 t3
 	* fonctions :
 	changer angles / tirer / deplacer / explosion.
-	Pour tirer et deplacer, on informe le terrain,
-	ce sera lui qu'il traite (vu qu'il a connaissace des
-	autres objets)
-
+	
 * Obus : caracterise par son type
 	* type 1 : -2 resistance,  diametre impact 5 pixels
 	* type 2 : -5 resistance, 20 pixels

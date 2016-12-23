@@ -11,7 +11,6 @@ Documentation : make documentation (ouvre le document également)
 
 * Tank : 
 	* etat : detruit ou non
-	* coords : Point
 	* capacite : pour le deplacement (init a L/10)
 	* canon : angle et pivot
 	* obus : illimite type1, 10 t2 et 5 t3

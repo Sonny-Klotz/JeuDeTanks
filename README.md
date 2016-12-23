@@ -1,13 +1,25 @@
 #Jeu de tanks
 
+Une description brève.
+
 ##Construction
-[Tuto makefile](http://gl.developpez.com/tutoriel/outil/makefile/)
 
-Rapport : make rapport (ouvre le document également)
+Prérequis pour compiler : qmake=> "sudo apt-get install qt-sdk"
 
-Documentation : make documentation (ouvre le document également)
+* Compil appli : "make"
+* Compil tests : "make tests"
+* Nettoyage :
+	* "make clean" supprime les binaires '.o'
+	* "make distclean" nettoyage complet (supprime tous les fichiers construits à la compilation)
+	
+##Execution
+
+* Application : "make run" // make run compile automatiquement si ce n'est pas deja fait
+* Tests : "make run-tests" // idem
 
 ##Développement
+
+* Test : pour ajouter un test, il faut ajouter dans tests.pro le .cpp // et le include dans TestTankApp.cpp
 
 * Tank : 
 	* etat : detruit ou non
@@ -60,15 +72,7 @@ Documentation : make documentation (ouvre le document également)
 		* on les traite
 		* on passe a l'autre joueur quand obus tiré
 
-##Execution
-
-Rapport : make rapport
-
-Documentation : make documentation
-
 ##Utilisation
-
-##Documentation
 
 ##Auteurs
 ###Florian Lienhardt

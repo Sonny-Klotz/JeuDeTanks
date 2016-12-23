@@ -1,26 +1,30 @@
-SRC=/home/user/Bureau/JeuDeTanks/src
-TARGET=/home/user/Bureau/JeuDeTanks/target
-NAVIGATEUR=firefox
+SRC=src
+TARGET=target
 
 all:
+	qmake -makefile -o MakefileApp $(SRC)/tankApp/tankApp.pro
+	make -f MakefileApp
+	
+run: all
+	tankApp
+	
+tests: all
+	qmake -makefile -o MakefileTests $(SRC)/tests/tests.pro
+	moc -o testtankapp.moc $(SRC)/$@/TestTankApp.cpp 
+	make -f MakefileTests
+	
+run-tests: tests
+	$(TARGET)/bin-tests/tests
 
-rapport:
-	pdflatex -output-directory $(TARGET)/rapport $(SRC)/rapport/rapport.tex
-	evince $(TARGET)/rapport/$@.pdf &
-	clear
-
-documentation:
-	doxygen $(SRC)/Doxyfile
-	$(NAVIGATEUR) $(TARGET)/$@/index.html &
-	sleep 1
-	clear
-
-.PHONY: clean
+.PHONY: all clean tests
 
 clean:
-	rm $(TARGET)/rapport/rapport.log
-	rm $(TARGET)/rapport/rapport.aux
+# Binaires issus de la compilation des classes
+	find . -name "*.o" -type f -delete
 
 distclean: clean
-	rm $(TARGET)/rapport/rapport.pdf
-	rm $(TARGET)/documentation
+# Fichiers générés à la compilation
+	rm -rf $(TARGET)
+	rm -f MakefileApp
+	rm -f MakefileTests
+	find . -name "*.moc" -type f -delete

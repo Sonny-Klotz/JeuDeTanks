@@ -1,4 +1,7 @@
 #include <QApplication>
+#include "Jeu.h"
+
+Jeu *jeu;
 
 /*!
  * \file main.cpp
@@ -10,6 +13,9 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    jeu = new Jeu();
+    jeu->show();
 
     return a.exec();
 }

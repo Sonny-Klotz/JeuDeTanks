@@ -13,9 +13,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        Point.cpp
+        Point.cpp \
+    Jeu.cpp \
+    Terrain.cpp \
+    Joueur.cpp
 
-HEADERS  += Point.h
+HEADERS  += Point.h \
+    Jeu.h \
+    Terrain.h \
+    Joueur.h
 
 # Output
 DESTDIR = target/bin

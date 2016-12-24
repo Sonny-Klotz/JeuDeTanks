@@ -8,7 +8,7 @@ TypeObstacle heightToObs1(int i)
         case(0): t = EAU; break;
         case(1): t = ARBRE; break;
         case(2): t = ROCHER; break;
-        default: break;
+        default: t = RIEN; break;
     }
     return t;
 }

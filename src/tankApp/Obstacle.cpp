@@ -12,7 +12,7 @@ Obstacle::Obstacle(TypeObstacle type, Point posinit): pos(posinit.getx(), posini
     case(CREVASSE3):
         resistance = -2;
         break;
-    default: break;
+    default: resistance = 0; break; //RIEN
     }
 }
 

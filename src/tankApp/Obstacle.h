@@ -11,7 +11,7 @@
 #include <QBrush>
 #include <QColor>
 
-enum TypeObstacle {ARBRE, ROCHER, EAU, CREVASSE1, CREVASSE2, CREVASSE3};
+enum TypeObstacle {ARBRE, ROCHER, EAU, CREVASSE1, CREVASSE2, CREVASSE3, RIEN};
 
 class Obstacle : public QGraphicsItem
 {

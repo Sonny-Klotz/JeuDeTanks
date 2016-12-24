@@ -9,6 +9,7 @@ Jeu::Jeu() : QWidget()
 
     terrain = new Terrain();
     scene->addItem(terrain);
+    terrain->initObstacles();
 
     QGraphicsView *carte = new QGraphicsView(scene, this);
     scene->setBackgroundBrush(QBrush(QColor::fromRgb(197, 133, 61)));

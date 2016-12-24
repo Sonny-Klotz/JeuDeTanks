@@ -16,12 +16,19 @@ SOURCES += main.cpp\
         Point.cpp \
     Jeu.cpp \
     Terrain.cpp \
-    Joueur.cpp
+    Joueur.cpp \
+    Segment.cpp \
+    Obstacle.cpp \
+    Heightmap.cpp
 
 HEADERS  += Point.h \
     Jeu.h \
     Terrain.h \
-    Joueur.h
+    Joueur.h \
+    Segment.h \
+    Obstacle.h \
+    Heightmap.h \
+    def.h
 
 # Output
 DESTDIR = target/bin

@@ -3,8 +3,10 @@
 
 #define NJOUEURS 2
 
+#include "def.h"
 #include "Terrain.h"
 #include "Joueur.h"
+
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -13,21 +15,16 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGridLayout>
+#include <QBrush>
+#include <QColor>
 
 class Jeu : public QWidget
 {
 private:
-    Joueur joueurs[NJOUEURS];
     Terrain *terrain;
-    QGraphicsView *carte;
-    QPushButton *obus1;
-    QPushButton *obus2;
-    QPushButton *obus3;
-    QSlider *angleH;
-    QSlider *angleV;
-
 public:
     Jeu();
+    QGraphicsScene *scene;
 };
 
 #endif // JEU_H

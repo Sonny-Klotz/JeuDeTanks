@@ -1,5 +1,6 @@
 #include <QApplication>
 #include "Jeu.h"
+#include "Heightmap.h"
 
 Jeu *jeu;
 

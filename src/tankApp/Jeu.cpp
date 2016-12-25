@@ -1,4 +1,7 @@
 #include "Jeu.h"
+#include "Tank.h" //temporaire pour tester le tank
+
+
 
 Jeu::Jeu() : QWidget()
 {
@@ -6,7 +9,15 @@ Jeu::Jeu() : QWidget()
     QGraphicsScene *scene = new QGraphicsScene(0, 0, LARGEUR, HAUTEUR, this);
     /* ici on ajoutera a "scene" les elements d'un new Terrain() et les new MyTank()
      * pour pouvoir les afficher */
+
+    Tank * tank = new Tank(100,100);//temporaire pour tester le tank
+    tank->setPos(100,100);
+    tank->setFlag(QGraphicsItem::ItemIsFocusable);
+    tank->setFocus();
+    scene->addItem(tank);
+
     carte = new QGraphicsView(scene, this);
+
 
 
     // positionnement des widgets
@@ -29,4 +40,5 @@ Jeu::Jeu() : QWidget()
     layout->addLayout(anglesLayout);
     layout->addLayout(obusLayout);
     setLayout(layout);
+
 }

@@ -16,14 +16,18 @@ SOURCES += main.cpp\
         Point.cpp \
     Jeu.cpp \
     Terrain.cpp \
-    Joueur.cpp
+    Joueur.cpp \
+    Tank.cpp
 
 HEADERS  += Point.h \
     Jeu.h \
     Terrain.h \
-    Joueur.h
+    Joueur.h \
+    Tank.h
 
 # Output
 DESTDIR = target/bin
 OBJECTS_DIR = target/bin
 MOC_DIR = src/tankApp
+
+FORMS +=

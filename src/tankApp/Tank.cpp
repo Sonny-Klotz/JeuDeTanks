@@ -33,7 +33,7 @@ void Tank::keyPressEvent(QKeyEvent *event){
     QMutableListIterator<QGraphicsItem *> *liste;
 
     //Les coordonées 0,0 sont dans le coin en haut a gauche de l'ecran
-    if(event->key()== Qt::Key_Left && scenePos().x() >= 5){
+    if(event->key()== Qt::Key_Left){
         setPos(x() - 5, y());
 
         collisions = scene()->collidingItems(this);
@@ -48,7 +48,7 @@ void Tank::keyPressEvent(QKeyEvent *event){
             setPos(x() + 5, y());
     }
 
-    if(event->key()== Qt::Key_Right && scenePos().x() <= LARGEUR - 25){
+    if(event->key()== Qt::Key_Right){
         setPos(x() + 5, y());
 
         collisions = scene()->collidingItems(this);
@@ -63,7 +63,7 @@ void Tank::keyPressEvent(QKeyEvent *event){
             setPos(x() - 5, y());
     }
 
-    if(event->key()== Qt::Key_Up && y() >= 5){
+    if(event->key()== Qt::Key_Up){
         setPos(x(), y() - 5);
 
         collisions = scene()->collidingItems(this);
@@ -78,7 +78,7 @@ void Tank::keyPressEvent(QKeyEvent *event){
             setPos(x(), y() + 5);
     }
 
-    if(event->key()== Qt::Key_Down && y() <= HAUTEUR - 25){
+    if(event->key()== Qt::Key_Down){
         setPos(x(), y() + 5);
 
         collisions = scene()->collidingItems(this);

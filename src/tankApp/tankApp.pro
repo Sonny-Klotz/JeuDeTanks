@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     Obstacle.cpp \
     Heightmap.cpp \
     Individu.cpp \
-    Ordinateur.cpp
+    Ordinateur.cpp \
+    Tank.cpp
 
 HEADERS  += Point.h \
     Jeu.h \
@@ -32,9 +33,12 @@ HEADERS  += Point.h \
     Heightmap.h \
     def.h \
     Individu.h \
-    Ordinateur.h
+    Ordinateur.h \
+    Tank.h
 
 # Output
 DESTDIR = target/bin
 OBJECTS_DIR = target/bin
 MOC_DIR = src/tankApp
+
+FORMS +=

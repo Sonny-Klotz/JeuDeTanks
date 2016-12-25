@@ -1,4 +1,7 @@
 #include "Jeu.h"
+#include "Tank.h" //temporaire pour tester le tank
+
+
 
 Jeu::Jeu() : QWidget()
 {
@@ -39,6 +42,7 @@ Jeu::Jeu() : QWidget()
     layout->addLayout(anglesLayout);
     layout->addLayout(obusLayout);
     setLayout(layout);
+
 }
 
 Jeu::~Jeu()

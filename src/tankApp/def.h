@@ -3,5 +3,6 @@
 
 class Jeu;
 class Terrain;
+class Joueur;
 
 #endif // DEF_H

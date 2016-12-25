@@ -1,11 +1,15 @@
 #ifndef JEU_H
 #define JEU_H
 
-#define NJOUEURS 2
+#define NINDIVIDUS 1
+#define NORDINATEURS 1
 
 #include "def.h"
 #include "Terrain.h"
 #include "Joueur.h"
+#include "Individu.h"
+#include "Ordinateur.h"
+#include "Tank.h"
 
 #include <QWidget>
 #include <QGraphicsView>
@@ -22,8 +26,11 @@ class Jeu : public QWidget
 {
 private:
     Terrain *terrain;
+    Joueur **joueurs;
+
 public:
     Jeu();
+    ~Jeu();
     QGraphicsScene *scene;
 };
 

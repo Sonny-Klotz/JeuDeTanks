@@ -19,7 +19,9 @@ SOURCES += main.cpp\
     Joueur.cpp \
     Segment.cpp \
     Obstacle.cpp \
-    Heightmap.cpp
+    Heightmap.cpp \
+    Individu.cpp \
+    Ordinateur.cpp
 
 HEADERS  += Point.h \
     Jeu.h \
@@ -28,7 +30,9 @@ HEADERS  += Point.h \
     Segment.h \
     Obstacle.h \
     Heightmap.h \
-    def.h
+    def.h \
+    Individu.h \
+    Ordinateur.h
 
 # Output
 DESTDIR = target/bin

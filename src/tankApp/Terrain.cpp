@@ -34,7 +34,7 @@ void Terrain::initObstacles()
         liste = new QMutableListIterator<QGraphicsItem *>(collisions);
         while (liste->hasNext()) {
             QGraphicsItem *tmp = liste->next();
-            if (typeid(*tmp) != typeid(Obstacle))
+            if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Joueur))
                 liste->remove();
         }
 

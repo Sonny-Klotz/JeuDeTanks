@@ -2,6 +2,7 @@
 
 Individu::Individu(Point posinit)
 {
+
     tank = new Tank(posinit.getx(), posinit.gety());
     tank->setZValue(1);
     addToGroup(tank);

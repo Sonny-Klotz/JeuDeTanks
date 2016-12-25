@@ -1,6 +1,6 @@
 #include "Tank.h"
 
-Tank::Tank(int X, int Y) :QGraphicsItem(){
+Tank::Tank(int X, int Y) : QGraphicsItem(){
     tankEtat = true;
     tankCapDeplacement = LARGEUR / 10;
     tankCanonAngle = 90;
@@ -18,37 +18,79 @@ QRectF Tank::boundingRect() const{
 
 void Tank::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
 
-    painter->fillRect(coordX+0,coordY+0,3,18,QBrush(Qt::darkGray));
-    painter->drawRect(coordX+0,coordY+0,3,18);
-    painter->fillRect(coordX+3,coordY+1,10,16,QBrush(Qt::lightGray));
-    painter->drawRect(coordX+3,coordY+1,10,16);
-    painter->fillRect(coordX+13,coordY+0,3,18,QBrush(Qt::darkGray));
-    painter->drawRect(coordX+13,coordY+0,3,18);
+    painter->fillRect(coordX+0,coordY+0,3,20,QBrush(Qt::darkGray));
+    painter->drawRect(coordX+0,coordY+0,3,20);
+    painter->fillRect(coordX+3,coordY+2,14,16,QBrush(Qt::lightGray));
+    painter->drawRect(coordX+3,coordY+2,14,16);
+    painter->fillRect(coordX+17,coordY+0,3,20,QBrush(Qt::darkGray));
+    painter->drawRect(coordX+17,coordY+0,3,20);
 
 }
 
 
 void Tank::keyPressEvent(QKeyEvent *event){
+    QList<QGraphicsItem *> collisions;
+    QMutableListIterator<QGraphicsItem *> *liste;
 
     //Les coordonées 0,0 sont dans le coin en haut a gauche de l'ecran
-    if(event->key()== Qt::Key_Left){
-        setPos(x()-5,y());
-        qDebug() <<"toucher G";
+    if(event->key()== Qt::Key_Left && scenePos().x() >= 5){
+        setPos(x() - 5, y());
+
+        collisions = scene()->collidingItems(this);
+        liste = new QMutableListIterator<QGraphicsItem *>(collisions);
+        while (liste->hasNext()) {
+            QGraphicsItem *tmp = liste->next();
+            if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
+                liste->remove();
+        }
+
+        if(!collisions.empty())
+            setPos(x() + 5, y());
     }
 
-    if(event->key()== Qt::Key_Right){
-        setPos(x()+5,y());
-        qDebug() <<"toucher D";
+    if(event->key()== Qt::Key_Right && scenePos().x() <= LARGEUR - 25){
+        setPos(x() + 5, y());
+
+        collisions = scene()->collidingItems(this);
+        liste = new QMutableListIterator<QGraphicsItem *>(collisions);
+        while (liste->hasNext()) {
+            QGraphicsItem *tmp = liste->next();
+            if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
+                liste->remove();
+        }
+
+        if(!collisions.empty())
+            setPos(x() - 5, y());
     }
 
-    if(event->key()== Qt::Key_Up){
-        setPos(x(),y()-5);
-        qDebug() <<"toucher H";
+    if(event->key()== Qt::Key_Up && y() >= 5){
+        setPos(x(), y() - 5);
+
+        collisions = scene()->collidingItems(this);
+        liste = new QMutableListIterator<QGraphicsItem *>(collisions);
+        while (liste->hasNext()) {
+            QGraphicsItem *tmp = liste->next();
+            if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
+                liste->remove();
+        }
+
+        if(!collisions.empty())
+            setPos(x(), y() + 5);
     }
 
-    if(event->key()== Qt::Key_Down){
-        setPos(x(),y()+5);
-        qDebug() <<"toucher B";
+    if(event->key()== Qt::Key_Down && y() <= HAUTEUR - 25){
+        setPos(x(), y() + 5);
+
+        collisions = scene()->collidingItems(this);
+        liste = new QMutableListIterator<QGraphicsItem *>(collisions);
+        while (liste->hasNext()) {
+            QGraphicsItem *tmp = liste->next();
+            if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
+                liste->remove();
+        }
+
+        if(!collisions.empty())
+            setPos(x(), y() - 5);
     }
 
 }

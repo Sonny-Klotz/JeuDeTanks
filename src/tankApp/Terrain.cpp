@@ -23,7 +23,7 @@ void Terrain::initObstacles()
     QMutableListIterator<QGraphicsItem *> *liste;
     while(i < nObstacles)
     {
-        tmppos = new Point(rand() % (LARGEUR - 25) , rand() % (HAUTEUR - 20));
+        tmppos = new Point(rand() % (LARGEUR - 15) , rand() % (HAUTEUR - 15));
         typeObs = heightToObs1(h->map[tmppos->gety()][tmppos->getx()]);
         tmpobs = new Obstacle(typeObs, *tmppos);
 
@@ -31,7 +31,7 @@ void Terrain::initObstacles()
         liste = new QMutableListIterator<QGraphicsItem *>(collisions);
         while (liste->hasNext()) {
             QGraphicsItem *tmp = liste->next();
-            if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Joueur))
+            if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
                 liste->remove();
         }
 

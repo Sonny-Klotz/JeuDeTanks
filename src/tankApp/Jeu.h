@@ -1,12 +1,9 @@
 #ifndef JEU_H
 #define JEU_H
 
-#define NINDIVIDUS 1
-#define NORDINATEURS 1
-
 #include "def.h"
-#include "Terrain.h"
 #include "Joueur.h"
+#include "Terrain.h"
 #include "Individu.h"
 #include "Ordinateur.h"
 #include "Tank.h"
@@ -21,6 +18,8 @@
 #include <QGridLayout>
 #include <QBrush>
 #include <QColor>
+#include <stdlib.h>
+#include <time.h>
 
 class Jeu : public QWidget
 {

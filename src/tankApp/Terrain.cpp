@@ -1,8 +1,5 @@
 #include "Terrain.h"
 
-#include <iostream>
-using std::cout;
-
 Terrain::Terrain()
 {
     h = new Heightmap(HAUTEUR, LARGEUR);
@@ -26,7 +23,7 @@ void Terrain::initObstacles()
     QMutableListIterator<QGraphicsItem *> *liste;
     while(i < nObstacles)
     {
-        tmppos = new Point(rand() % LARGEUR, rand() % HAUTEUR);
+        tmppos = new Point(rand() % (LARGEUR - 25) , rand() % (HAUTEUR - 20));
         typeObs = heightToObs1(h->map[tmppos->gety()][tmppos->getx()]);
         tmpobs = new Obstacle(typeObs, *tmppos);
 

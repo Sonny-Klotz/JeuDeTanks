@@ -1,6 +1,8 @@
 #ifndef TANK_H
 #define TANK_H
 
+#include "def.h"
+
 #include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QPainter>
@@ -18,7 +20,6 @@ private:
     int coordX;
     int coordY;
 public:
-    Tank();
     Tank(int X,int Y);
     void keyPressEvent(QKeyEvent * event);
 

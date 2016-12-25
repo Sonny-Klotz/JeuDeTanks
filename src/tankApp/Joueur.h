@@ -1,6 +1,8 @@
 #ifndef JOUEUR_H
 #define JOUEUR_H
 
+#include "Tank.h"
+
 #include <QGraphicsItemGroup>
 
 /*!
@@ -8,8 +10,8 @@
  */
 class Joueur : public QGraphicsItemGroup
 {
-private:
-    Tank *tank;
+protected:
+  Tank *tank;
 
 
 public:

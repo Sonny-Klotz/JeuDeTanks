@@ -1,18 +1,24 @@
 #include "Jeu.h"
-#include "Tank.h" //temporaire pour tester le tank
-
-
+#include "Tank.h"
 
 Jeu::Jeu() : QWidget()
 {
+    srand(time(NULL));
     //scene : carte avec obstacles et tanks
     scene = new QGraphicsScene(0, 0, LARGEUR, HAUTEUR, this);
 
     joueurs = new Joueur*[NORDINATEURS + NINDIVIDUS];
     for(int i = 0; i < NINDIVIDUS; i++) {
-        joueurs[i] = new Individu(); scene->addItem(joueurs[i]); }
-    for(i = NINDIVIDUS; i < NINDIVIDUS + NORDINATEURS; i++) {
-        joueurs[i] = new Ordinateur(); scene->addItem(joueurs[i]); }
+        joueurs[i] = new Individu(Point(rand() % (LARGEUR - 20),rand() % (HAUTEUR - 20)));
+        joueurs[i]->setFlag(QGraphicsItem::ItemIsFocusable);
+        scene->addItem(joueurs[i]);
+    }
+    for(int i = NINDIVIDUS; i < NINDIVIDUS + NORDINATEURS; i++) {
+        joueurs[i] = new Ordinateur(Point(rand() % (LARGEUR - 20),rand() % (HAUTEUR - 20)));
+        joueurs[i]->setFlag(QGraphicsItem::ItemIsFocusable);
+        scene->addItem(joueurs[i]);
+    }
+    joueurs[rand() % NINDIVIDUS + NORDINATEURS]->setFocus();
 
     terrain = new Terrain();
     scene->addItem(terrain);

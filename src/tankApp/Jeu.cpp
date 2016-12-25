@@ -1,11 +1,24 @@
 #include "Jeu.h"
+#include "Tank.h"
 
 Jeu::Jeu() : QWidget()
 {
+    srand(time(NULL));
     //scene : carte avec obstacles et tanks
     scene = new QGraphicsScene(0, 0, LARGEUR, HAUTEUR, this);
-    /* ici on ajoutera a "scene" les elements d'un new Terrain() et les new MyTank()
-     * pour pouvoir les afficher */
+
+    joueurs = new Joueur*[NORDINATEURS + NINDIVIDUS];
+    for(int i = 0; i < NINDIVIDUS; i++) {
+        joueurs[i] = new Individu(Point(rand() % (LARGEUR - 20),rand() % (HAUTEUR - 20)));
+        joueurs[i]->setFlag(QGraphicsItem::ItemIsFocusable);
+        scene->addItem(joueurs[i]);
+    }
+    for(int i = NINDIVIDUS; i < NINDIVIDUS + NORDINATEURS; i++) {
+        joueurs[i] = new Ordinateur(Point(rand() % (LARGEUR - 20),rand() % (HAUTEUR - 20)));
+        joueurs[i]->setFlag(QGraphicsItem::ItemIsFocusable);
+        scene->addItem(joueurs[i]);
+    }
+    joueurs[rand() % NINDIVIDUS + NORDINATEURS]->setFocus();
 
     terrain = new Terrain();
     scene->addItem(terrain);
@@ -35,4 +48,10 @@ Jeu::Jeu() : QWidget()
     layout->addLayout(anglesLayout);
     layout->addLayout(obusLayout);
     setLayout(layout);
+
+}
+
+Jeu::~Jeu()
+{
+    delete joueurs;
 }

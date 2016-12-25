@@ -5,6 +5,7 @@
 #include "Heightmap.h"
 #include "Obstacle.h"
 #include "Point.h"
+#include "Joueur.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsItem>
@@ -12,11 +13,6 @@
 #include <QList>
 #include <QMutableListIterator>
 #include <typeinfo>
-
-#define LARGEUR 700
-#define HAUTEUR 400
-#define S_MOY_OBS 242
-#define DENSITE 0.07
 
 class Terrain : public QGraphicsItemGroup
 

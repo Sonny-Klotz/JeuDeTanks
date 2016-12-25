@@ -10,6 +10,7 @@
 #include <QWidget>
 #include <QBrush>
 #include <QColor>
+#include <QPainterPath>
 
 enum TypeObstacle {ARBRE, ROCHER, EAU, CREVASSE1, CREVASSE2, CREVASSE3, RIEN};
 
@@ -26,6 +27,7 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
+    QPainterPath shape() const;
 };
 
 #endif // OBSTACLE_H

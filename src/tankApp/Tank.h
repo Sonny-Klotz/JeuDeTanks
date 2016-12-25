@@ -2,12 +2,16 @@
 #define TANK_H
 
 #include "def.h"
+#include "Obstacle.h"
 
 #include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QPainter>
 #include <QDebug>
 #include <QGraphicsScene>
+#include <QList>
+#include <QMutableListIterator>
+#include <typeinfo>
 
 class Tank: public QGraphicsItem{
 private:

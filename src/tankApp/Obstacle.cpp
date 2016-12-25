@@ -22,12 +22,12 @@ QRectF Obstacle::boundingRect() const
 {
     QRectF *rect;
     switch(type) {
-        case(ARBRE): rect = new QRectF(pos.getx(), pos.gety(), 15, 15); break;
-        case(ROCHER): rect = new QRectF(pos.getx(), pos.gety(), 10, 10); break;
-        case(EAU): rect = new QRectF(pos.getx(), pos.gety(), 20, 20); break;
+        case(ARBRE): rect = new QRectF(pos.getx(), pos.gety(), 20, 20); break;
+        case(ROCHER): rect = new QRectF(pos.getx(), pos.gety(), 15, 15); break;
+        case(EAU): rect = new QRectF(pos.getx(), pos.gety(), 50, 50); break;
         case(CREVASSE1): rect = new QRectF(pos.getx(), pos.gety(), 5, 5); break;
         case(CREVASSE2): rect =  new QRectF(pos.getx(), pos.gety(), 20, 20); break;
-        case(CREVASSE3): rect =  new QRectF(pos.getx(), pos.gety(), 25, 25); break;
+        case(CREVASSE3): rect =  new QRectF(pos.getx(), pos.gety(), 28, 28); break;
         default: rect = NULL; break;
     }
     return *rect;
@@ -58,9 +58,16 @@ void Obstacle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
             break; }
         case(CREVASSE3): {
             painter->setBrush(QBrush(QColor::fromRgb(89,36,22)));
-            painter->drawEllipse(QRectF(pos.getx(), pos.gety(), 25, 25));
+            painter->drawEllipse(QRectF(pos.getx(), pos.gety(), 28, 28));
             break; }
         default: break;
     }
 
+}
+
+QPainterPath Obstacle::shape() const
+{
+    QPainterPath path;
+    path.addEllipse(boundingRect());
+    return path;
 }

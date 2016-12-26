@@ -1,5 +1,4 @@
 #include "Tank.h"
-#include <QDebug>
 
 Tank::Tank(int X, int Y, QGraphicsItem *parent) : QGraphicsItem(){
     tankEtat = true;
@@ -32,8 +31,6 @@ void Tank::keyPressEvent(QKeyEvent *event){
     QList<QGraphicsItem *> collisions;
     QMutableListIterator<QGraphicsItem *> *liste;
 
-    qDebug() << pos().x() << pos().y();
-    //Les coordonées 0,0 sont dans le coin en haut a gauche de l'ecran
     if(event->key()== Qt::Key_Left && pos().x() >=5){
         setPos(x() - 5, y());
 
@@ -47,6 +44,8 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
         if(!collisions.empty())
             setPos(x() + 5, y());
+        else
+            infos->setPos(infos->x() - 10, infos->y());
     }
 
     if(event->key()== Qt::Key_Right && pos().x() <= LARGEUR - 15){
@@ -62,6 +61,8 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
         if(!collisions.empty())
             setPos(x() - 5, y());
+        else
+            infos->setPos(infos->x() + 10, infos->y());
     }
 
     if(event->key()== Qt::Key_Up && pos().y() >=5){
@@ -77,6 +78,8 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
         if(!collisions.empty())
             setPos(x(), y() + 5);
+        else
+            infos->setPos(infos->x(), infos->y() - 10);
     }
 
     if(event->key()== Qt::Key_Down && pos().y() <= HAUTEUR - 15){
@@ -92,6 +95,8 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
         if(!collisions.empty())
             setPos(x(), y() - 5);
+        else
+            infos->setPos(infos->x(), infos->y() + 10);
     }
 
 }

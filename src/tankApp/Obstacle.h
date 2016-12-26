@@ -19,6 +19,7 @@ class Obstacle : public QGraphicsItem
 private:
     TypeObstacle type;
     int resistance;
+    Point pos;
 
 public:
     Obstacle(TypeObstacle type, Point posinit);

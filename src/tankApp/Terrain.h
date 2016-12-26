@@ -5,7 +5,7 @@
 #include "Heightmap.h"
 #include "Obstacle.h"
 #include "Point.h"
-#include "Joueur.h"
+#include "Tank.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsItem>

@@ -1,6 +1,6 @@
 #include "Individu.h"
 
-Individu::Individu(Point posinit)
+Individu::Individu(Point posinit): QGraphicsItemGroup()
 {
 
     tank = new Tank(posinit.getx(), posinit.gety());

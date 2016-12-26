@@ -2,6 +2,7 @@
 #define JOUEUR_H
 
 #include "Tank.h"
+#include "Infos.h"
 
 #include <QGraphicsItemGroup>
 
@@ -11,8 +12,8 @@
 class Joueur : public QGraphicsItemGroup
 {
 protected:
-  Tank *tank;
-
+    Tank *tank;
+    Infos *infos;
 
 public:
     virtual void jouerTour() = 0;

@@ -1,24 +1,29 @@
 #include "Jeu.h"
-#include "Tank.h"
 
 Jeu::Jeu() : QWidget()
 {
     srand(time(NULL));
     //scene : carte avec obstacles et tanks
-    scene = new QGraphicsScene(0, 0, LARGEUR, HAUTEUR, this);
+    scene = new QGraphicsScene(0, 0, 2*LARGEUR, 2*HAUTEUR);
 
-    joueurs = new Joueur*[NORDINATEURS + NINDIVIDUS];
+    int x,y;
+    ordinateurs = new Ordinateur*[NORDINATEURS];
+    for(int i = 0; i < NORDINATEURS; i++) {
+        x = rand() % (LARGEUR - 20);
+        y = rand() % (HAUTEUR - 20);
+        ordinateurs[i] = new Ordinateur(Point(x, y));
+        ordinateurs[i]->setFlag(QGraphicsItem::ItemIsFocusable);
+        scene->addItem(ordinateurs[i]);
+    }
+    joueurs = new Individu*[NINDIVIDUS];
     for(int i = 0; i < NINDIVIDUS; i++) {
-        joueurs[i] = new Individu(Point(rand() % (LARGEUR - 20),rand() % (HAUTEUR - 20)));
+        x = rand() % (LARGEUR - 20);
+        y = rand() % (HAUTEUR - 20);
+        joueurs[i] = new Individu(Point(x, y));
         joueurs[i]->setFlag(QGraphicsItem::ItemIsFocusable);
         scene->addItem(joueurs[i]);
     }
-    for(int i = NINDIVIDUS; i < NINDIVIDUS + NORDINATEURS; i++) {
-        joueurs[i] = new Ordinateur(Point(rand() % (LARGEUR - 20),rand() % (HAUTEUR - 20)));
-        joueurs[i]->setFlag(QGraphicsItem::ItemIsFocusable);
-        scene->addItem(joueurs[i]);
-    }
-    joueurs[rand() % NINDIVIDUS + NORDINATEURS]->setFocus();
+    joueurs[0]->setFocus();
 
     terrain = new Terrain();
     scene->addItem(terrain);
@@ -47,6 +52,7 @@ Jeu::Jeu() : QWidget()
     layout->addWidget(carte);
     layout->addLayout(anglesLayout);
     layout->addLayout(obusLayout);
+
     setLayout(layout);
 
 }
@@ -54,4 +60,9 @@ Jeu::Jeu() : QWidget()
 Jeu::~Jeu()
 {
     delete joueurs;
+}
+
+void Jeu::mousePressEvent(QMouseEvent *event)
+{
+    qDebug() << event->x() << event->y();
 }

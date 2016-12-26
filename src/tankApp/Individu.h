@@ -2,10 +2,16 @@
 #define INDIVIDU_H
 
 #include "Point.h"
-#include "Joueur.h"
+#include "Tank.h"
+#include "Infos.h"
 
-class Individu : public Joueur
+#include <QGraphicsItemGroup>
+
+class Individu : public QGraphicsItemGroup
 {
+private:
+    Tank *tank;
+    Infos *infos;
 public:
     Individu(Point posinit);
     void jouerTour();

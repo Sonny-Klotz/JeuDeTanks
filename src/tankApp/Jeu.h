@@ -2,10 +2,9 @@
 #define JEU_H
 
 #include "def.h"
-#include "Joueur.h"
-#include "Terrain.h"
 #include "Individu.h"
 #include "Ordinateur.h"
+#include "Terrain.h"
 #include "Tank.h"
 
 #include <QWidget>
@@ -15,7 +14,6 @@
 #include <QSlider>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include <QGridLayout>
 #include <QBrush>
 #include <QColor>
 #include <stdlib.h>
@@ -25,12 +23,14 @@ class Jeu : public QWidget
 {
 private:
     Terrain *terrain;
-    Joueur **joueurs;
+    Ordinateur **ordinateurs;
+    Individu **joueurs;
 
 public:
     Jeu();
     ~Jeu();
     QGraphicsScene *scene;
+    void mousePressEvent(QMouseEvent *event);
 };
 
 #endif // JEU_H

@@ -1,16 +1,15 @@
 #ifndef DEF_H
 #define DEF_H
 
-#define NINDIVIDUS 3
-#define NORDINATEURS 0
+#define NINDIVIDUS 2
+#define NORDINATEURS 2
 
-#define LARGEUR 700
-#define HAUTEUR 400
+#define LARGEUR 400
+#define HAUTEUR 250
 #define S_MOY_OBS 242
-#define DENSITE 0.07
+#define DENSITE 0.2
 
 class Jeu;
 class Terrain;
-class Joueur;
 
 #endif // DEF_H

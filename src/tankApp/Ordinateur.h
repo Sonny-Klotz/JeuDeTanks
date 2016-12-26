@@ -2,10 +2,16 @@
 #define ORDINATEUR_H
 
 #include "Point.h"
-#include "Joueur.h"
+#include "Tank.h"
+#include "Infos.h"
 
-class Ordinateur : public Joueur
+#include <QGraphicsItemGroup>
+
+class Ordinateur : public QGraphicsItemGroup
 {
+private:
+    Tank *tank;
+    Infos *infos;
 public:
     Ordinateur(Point posinit);
     void jouerTour();

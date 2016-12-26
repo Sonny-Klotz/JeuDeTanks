@@ -3,7 +3,6 @@
 
 #include "Point.h"
 #include "Tank.h"
-#include "Infos.h"
 
 #include <QGraphicsItemGroup>
 
@@ -11,7 +10,6 @@ class Ordinateur : public QGraphicsItemGroup
 {
 private:
     Tank *tank;
-    Infos *infos;
 public:
     Ordinateur(Point posinit);
     void jouerTour();

@@ -1,16 +1,21 @@
 #ifndef INFOS_H
 #define INFOS_H
 
-#include <QLabel>
+#include "Tank.h"
+
+#include <QGraphicsTextItem>
 #include <QString>
 
 /*!
  * \brief Widget contenant les informations d'un tank
  */
-class Infos : public QLabel
+class Infos : public QGraphicsTextItem
 {
 public:
-    Infos(QWidget *parent = 0);
+    Infos(Tank *t);
+
+    friend class Individu;
+    friend class Ordinateur;
 };
 
 #endif // INFOS_H

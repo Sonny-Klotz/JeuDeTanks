@@ -3,6 +3,7 @@
 
 #include "def.h"
 #include "Obstacle.h"
+#include "Infos.h"
 
 #include <QGraphicsItem>
 #include <QKeyEvent>
@@ -21,6 +22,7 @@ private:
     int tankCanonPivot; // allant de 0 à 360 )
     int tankNbrObusT2; //initialisé à 10
     int tankNbrObusT3; //initialisé à 5
+    Infos *infos;
 
 public:
     Tank(int X,int Y, QGraphicsItem *parent = 0);
@@ -28,8 +30,8 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
-    friend class Joueur;
     friend class Individu;
     friend class Ordinateur;
+    friend class Infos;
 };
 #endif // TANK_H

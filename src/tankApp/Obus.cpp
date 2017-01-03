@@ -1,8 +1,7 @@
 #include "Obus.h"
 
-Obus::Obus(int X, int Y,Point destination,int selection, QGraphicsItem *parent) : QGraphicsItem(){
+Obus::Obus(int X, int Y,Point destination,int selection, QGraphicsItem *parent) : impact(destination), QGraphicsItem(){
     typeObus = selection; // vaut 1, 2 ou 3 en fonction du bouton selectionnée
-    impact = destination;
     setPos(X,Y);
 }
 

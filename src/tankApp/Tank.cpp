@@ -39,6 +39,7 @@ void Tank::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     }
 }
 
+
 void Tank::keyPressEvent(QKeyEvent *event){
     QList<QGraphicsItem *> collisions;
     QMutableListIterator<QGraphicsItem *> *liste;

@@ -19,18 +19,30 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include <QDebug>
+
 class Jeu : public QWidget
 {
+    Q_OBJECT
+
 private:
     Terrain *terrain;
     Ordinateur **ordinateurs;
     Individu **joueurs;
+    QSlider *angleH;
+    QSlider *angleV;
+    QPushButton *obus1;
+    QPushButton *obus2;
+    QPushButton *obus3;
+
+public slots:
+    void sliderValue(int k);
+    void boutonObus();
 
 public:
     Jeu();
     ~Jeu();
     QGraphicsScene *scene;
-    void mousePressEvent(QMouseEvent *event);
 };
 
 #endif // JEU_H

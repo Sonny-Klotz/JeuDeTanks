@@ -1,4 +1,4 @@
-#include "Jeu.h"
+  #include "Jeu.h"
 
 Jeu::Jeu() : QWidget()
 {

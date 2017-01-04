@@ -14,8 +14,7 @@
 #include <QMutableListIterator>
 #include <typeinfo>
 
-class Terrain : public QGraphicsItemGroup
-
+class Terrain
 {
 private:
     Heightmap *h;
@@ -24,7 +23,7 @@ private:
 public:
     Terrain();
     ~Terrain();
-    void initObstacles();
+    void initObstacles(QGraphicsScene *scene);
 };
 
 #endif // TERRAIN_H

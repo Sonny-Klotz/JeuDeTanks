@@ -1,13 +1,13 @@
 #include "Infos.h"
 
-Infos::Infos(Tank *t): QGraphicsTextItem()
+Infos::Infos(Tank *t, QGraphicsItem *parent): QGraphicsTextItem(parent)
 {
-    setPos(2*t->x() - 25, 2*t->y() - 15);
+    setPos(pos().x() - 20, pos().y() - 15);
     setPlainText(QString::number(t->tankCapDeplacement) + ' ' +
                  QString::number(t->tankNbrObusT2) + ' ' +
                  QString::number(t->tankNbrObusT3) + ' ' +
                  QString::number(t->tankCanonAngle) + ' ' +
                  QString::number(t->tankCanonPivot));
-    setDefaultTextColor(Qt::blue);
-    setFont(QFont("arial",8));
+    setDefaultTextColor(Qt::black);
+    setFont(QFont("arial",7));
 }

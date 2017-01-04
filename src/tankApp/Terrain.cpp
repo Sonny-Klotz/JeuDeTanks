@@ -11,14 +11,13 @@ Terrain::~Terrain()
     delete h;
 }
 
-void Terrain::initObstacles()
+void Terrain::initObstacles(QGraphicsScene *scene)
 {
     int i = 0;
     Point *tmppos;
     Obstacle *tmpobs;
     TypeObstacle typeObs;
 
-    QGraphicsScene *scene = this->scene();
     QList<QGraphicsItem *> collisions;
     QMutableListIterator<QGraphicsItem *> *liste;
     while(i < nObstacles)
@@ -34,7 +33,6 @@ void Terrain::initObstacles()
             if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
                 liste->remove();
         }
-
         if(collisions.empty())
         {
             switch(typeObs)
@@ -45,7 +43,7 @@ void Terrain::initObstacles()
                 default: break;
             }
 
-            addToGroup(tmpobs);
+            scene->addItem(tmpobs);
             i++;
         }
     }

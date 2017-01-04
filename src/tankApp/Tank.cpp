@@ -1,6 +1,6 @@
 #include "Tank.h"
 
-Tank::Tank(int X, int Y, QGraphicsItem *parent) : QGraphicsItem(){
+Tank::Tank(/*int X, int Y,*/ QGraphicsItem *parent) : QGraphicsItem(parent){
     tankEtat = true;
     tankCapDeplacement = LARGEUR / 10;
     tankCanonAngle = 90;
@@ -8,7 +8,7 @@ Tank::Tank(int X, int Y, QGraphicsItem *parent) : QGraphicsItem(){
     tankNbrObusT2 = 10;
     tankNbrObusT3 = 5;
     vertical = true;
-    setPos(X, Y);
+    //setPos(X, Y);
 }
 
 QRectF Tank::boundingRect() const{
@@ -39,14 +39,13 @@ void Tank::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     }
 }
 
-
-void Tank::keyPressEvent(QKeyEvent *event){
+bool Tank::canMove(QKeyEvent *event)
+{
+    bool libre = true;
     QList<QGraphicsItem *> collisions;
     QMutableListIterator<QGraphicsItem *> *liste;
-    this->setTransformOriginPoint(10,10);
 
-    if(event->key()== Qt::Key_Left && pos().x() >=5){
-        if(vertical == true){vertical = false;}
+    if(event->key()== Qt::Key_Left){
         setPos(x() - 5, y());
 
         collisions = scene()->collidingItems(this);
@@ -56,15 +55,14 @@ void Tank::keyPressEvent(QKeyEvent *event){
             if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
                 liste->remove();
         }
+        if(!collisions.empty() || scenePos().x() < 0)
+            libre = false;
 
-        if(!collisions.empty())
-            setPos(x() + 5, y());
-        else
-            infos->setPos(infos->x() - 10, infos->y());
+        setPos(x() + 5, y());
+        vertical = false;
     }
 
-    if(event->key()== Qt::Key_Right && pos().x() <= LARGEUR - 15){
-        if(vertical == true){vertical = false;}
+    if(event->key()== Qt::Key_Right){
         setPos(x() + 5, y());
 
         collisions = scene()->collidingItems(this);
@@ -74,15 +72,14 @@ void Tank::keyPressEvent(QKeyEvent *event){
             if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
                 liste->remove();
         }
+        if(!collisions.empty() || scenePos().x() > LARGEUR - 20)
+            libre = false;
 
-        if(!collisions.empty())
-            setPos(x() - 5, y());
-        else
-            infos->setPos(infos->x() + 10, infos->y());
+        setPos(x() - 5, y());
+        vertical = false;
     }
 
-    if(event->key()== Qt::Key_Up && pos().y() >=5){
-        if(vertical == false){vertical = true;}
+    if(event->key()== Qt::Key_Up){
         setPos(x(), y() - 5);
 
         collisions = scene()->collidingItems(this);
@@ -92,15 +89,15 @@ void Tank::keyPressEvent(QKeyEvent *event){
             if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
                 liste->remove();
         }
+        if(!collisions.empty() || scenePos().y() < 0)
+            libre = false;
 
-        if(!collisions.empty())
-            setPos(x(), y() + 5);
-        else
-            infos->setPos(infos->x(), infos->y() - 10);
+        setPos(x(), y() + 5);
+        vertical = true;
     }
 
-    if(event->key()== Qt::Key_Down && pos().y() <= HAUTEUR - 15){
-        if(vertical == false){vertical = true;}
+    if(event->key()== Qt::Key_Down){
+        if(vertical == true){vertical = false;}
         setPos(x(), y() + 5);
 
         collisions = scene()->collidingItems(this);
@@ -110,12 +107,14 @@ void Tank::keyPressEvent(QKeyEvent *event){
             if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
                 liste->remove();
         }
+        if(!collisions.empty() || scenePos().y() > HAUTEUR - 20)
+            libre = false;
 
-        if(!collisions.empty())
-            setPos(x(), y() - 5);
-        else
-            infos->setPos(infos->x(), infos->y() + 10);
+        setPos(x(), y() - 5);
+        vertical = true;
+
     }
 
+    return libre;
 }
 

@@ -8,9 +8,9 @@
 #include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QPainter>
-#include <QDebug>
 #include <QGraphicsScene>
 #include <QList>
+#include <QDebug>
 #include <QMutableListIterator>
 #include <typeinfo>
 
@@ -22,6 +22,7 @@ private:
     int tankCanonPivot; // allant de 0 à 360 )
     int tankNbrObusT2; //initialisé à 10
     int tankNbrObusT3; //initialisé à 5
+    bool vertical; //verifie le sens du tank
     Infos *infos;
 
 public:
@@ -29,7 +30,6 @@ public:
     void keyPressEvent(QKeyEvent * event);
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-
     friend class Individu;
     friend class Ordinateur;
     friend class Infos;

@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     Individu.cpp \
     Ordinateur.cpp \
     Tank.cpp \
-    Infos.cpp
+    Infos.cpp \
+    Obus.cpp
 
 HEADERS  += Point.h \
     Jeu.h \
@@ -34,7 +35,8 @@ HEADERS  += Point.h \
     Individu.h \
     Ordinateur.h \
     Tank.h \
-    Infos.h
+    Infos.h \
+    Obus.h
 
 # Output
 DESTDIR = target/bin

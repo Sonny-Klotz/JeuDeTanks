@@ -1,5 +1,15 @@
   #include "Jeu.h"
 
+void Jeu::sliderValue(int k)
+{
+    qDebug() << k;
+}
+
+void Jeu::boutonObus()
+{
+    qDebug() << "Bouton appuyé";
+}
+
 Jeu::Jeu() : QWidget()
 {
     srand(time(NULL));
@@ -35,16 +45,16 @@ Jeu::Jeu() : QWidget()
 
     // positionnement des widgets
     QHBoxLayout *obusLayout = new QHBoxLayout();
-    QPushButton *obus1 = new QPushButton("OBUS 1", this);
-    QPushButton *obus2 = new QPushButton("OBUS 2", this);
-    QPushButton *obus3 = new QPushButton("OBUS 3", this);
+    obus1 = new QPushButton("OBUS 1", this);
+    obus2 = new QPushButton("OBUS 2", this);
+    obus3 = new QPushButton("OBUS 3", this);
     obusLayout->addWidget(obus1);
     obusLayout->addWidget(obus2);
     obusLayout->addWidget(obus3);
 
     QHBoxLayout *anglesLayout = new QHBoxLayout();
-    QSlider *angleH = new QSlider(Qt::Horizontal, this);
-    QSlider *angleV = new QSlider(Qt::Vertical, this);
+    angleH = new QSlider(Qt::Horizontal, this);
+    angleV = new QSlider(Qt::Vertical, this);
     anglesLayout->addWidget(angleH);
     anglesLayout->addWidget(angleV);
 
@@ -55,6 +65,16 @@ Jeu::Jeu() : QWidget()
 
     setLayout(layout);
 
+    angleH->setMaximum(359);
+    angleV->setMaximum(89);
+    connect(angleH, SIGNAL(valueChanged(int)), this, SLOT(sliderValue(int)));
+    connect(angleV, SIGNAL(valueChanged(int)), this, SLOT(sliderValue(int)));
+
+    connect(obus1, SIGNAL(pressed()), this, SLOT(boutonObus()));
+    connect(obus2, SIGNAL(pressed()), this, SLOT(boutonObus()));
+    connect(obus3, SIGNAL(pressed()), this, SLOT(boutonObus()));
+
+
 }
 
 Jeu::~Jeu()
@@ -62,7 +82,4 @@ Jeu::~Jeu()
     delete joueurs;
 }
 
-void Jeu::mousePressEvent(QMouseEvent *event)
-{
-    qDebug() << event->x() << event->y();
-}
+

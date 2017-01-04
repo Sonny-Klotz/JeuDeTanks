@@ -14,7 +14,7 @@ Jeu::Jeu() : QWidget()
 {
     srand(time(NULL));
     //scene : carte avec obstacles et tanks
-    scene = new QGraphicsScene(0, 0, 2*LARGEUR, 2*HAUTEUR);
+    scene = new QGraphicsScene(0, 0, LARGEUR, HAUTEUR);
 
     int x,y;
     ordinateurs = new Ordinateur*[NORDINATEURS];
@@ -36,8 +36,7 @@ Jeu::Jeu() : QWidget()
     joueurs[0]->setFocus();
 
     terrain = new Terrain();
-    scene->addItem(terrain);
-    terrain->initObstacles();
+    terrain->initObstacles(scene);
 
     QGraphicsView *carte = new QGraphicsView(scene, this);
     scene->setBackgroundBrush(QBrush(QColor::fromRgb(197, 133, 61)));
@@ -79,7 +78,7 @@ Jeu::Jeu() : QWidget()
 
 Jeu::~Jeu()
 {
-    delete joueurs;
+    delete terrain;
 }
 
 

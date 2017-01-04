@@ -10,10 +10,10 @@ class Individu : public QGraphicsItemGroup
 {
 private:
     Tank *tank;
+    Infos *infos;
 public:
     Individu(Point posinit);
     void keyPressEvent(QKeyEvent * event);
-
 };
 
 #endif // INDIVIDU_H

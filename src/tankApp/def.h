@@ -4,10 +4,10 @@
 #define NINDIVIDUS 2
 #define NORDINATEURS 2
 
-#define LARGEUR 400
-#define HAUTEUR 200
+#define LARGEUR 700
+#define HAUTEUR 400
 #define S_MOY_OBS 242
-#define DENSITE 0.3
+#define DENSITE 0.07
 
 class Jeu;
 class Terrain;

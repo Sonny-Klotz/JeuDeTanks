@@ -23,13 +23,13 @@ private:
     int tankNbrObusT2; //initialisé à 10
     int tankNbrObusT3; //initialisé à 5
     bool vertical; //verifie le sens du tank
-    Infos *infos;
 
 public:
-    Tank(int X,int Y, QGraphicsItem *parent = 0);
-    void keyPressEvent(QKeyEvent * event);
+    Tank(/*int X,int Y,*/ QGraphicsItem *parent = 0);
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    bool canMove(QKeyEvent *event);
+
     friend class Individu;
     friend class Ordinateur;
     friend class Infos;

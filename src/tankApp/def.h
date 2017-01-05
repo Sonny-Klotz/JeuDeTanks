@@ -8,10 +8,12 @@
 #define HAUTEUR 400
 #define S_MOY_OBS 242
 #define DENSITE 0.07
+#define PI 3.14159265
 
 class Jeu;
 class Terrain;
 class Infos;
 class Tank;
+class Individu;
 
 #endif // DEF_H

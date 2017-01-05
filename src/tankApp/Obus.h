@@ -11,10 +11,17 @@
 #include <QMutableListIterator>
 #include <typeinfo>
 
-class Obus : public QGraphicsItem {
+class Obus : public QObject, public QGraphicsItem
+{
+    Q_OBJECT
+
 private:
     int typeObus; //Vaut 1, 2 ou 3
     Point impact;
+    Point init;
+
+public slots:
+    void move();
 
 public:
     Obus(int X, int Y,Point destination, int selection, QGraphicsItem *parent = 0);

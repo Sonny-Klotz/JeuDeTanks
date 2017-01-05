@@ -1,17 +1,17 @@
 
 #include "Canon.h"
 
-Tank::Tank(/*int X, int Y,*/ QGraphicsItem *parent) : QGraphicsItem(parent){
-    CanonEtat = true;
-    //setPos(X, Y);
+Canon::Canon(int X, int Y, QGraphicsItem *parent) : QGraphicsItem(parent)
+{
+    setPos(X, Y);
 }
 
-QRectF Tank::boundingRect() const{
+QRectF Canon::boundingRect() const{
 
     return QRectF(x(), y(), 6, 2);
 }
 
-void Tank::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
+void Canon::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
 
         painter->fillRect(x(), y(), 6, 2, QBrush(Qt::darkGray));
         painter->drawRect(x(), y(), 6, 2);

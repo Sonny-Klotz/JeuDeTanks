@@ -1,14 +1,4 @@
-  #include "Jeu.h"
-
-void Jeu::sliderValue(int k)
-{
-    qDebug() << k;
-}
-
-void Jeu::boutonObus()
-{
-    qDebug() << "Bouton appuyé";
-}
+#include "Jeu.h"
 
 Jeu::Jeu() : QWidget()
 {
@@ -23,6 +13,7 @@ Jeu::Jeu() : QWidget()
         y = rand() % (HAUTEUR - 20);
         ordinateurs[i] = new Ordinateur(Point(x, y));
         ordinateurs[i]->setFlag(QGraphicsItem::ItemIsFocusable);
+        ordinateurs[i]->setZValue(5);
         scene->addItem(ordinateurs[i]);
     }
     joueurs = new Individu*[NINDIVIDUS];
@@ -31,9 +22,10 @@ Jeu::Jeu() : QWidget()
         y = rand() % (HAUTEUR - 20);
         joueurs[i] = new Individu(Point(x, y));
         joueurs[i]->setFlag(QGraphicsItem::ItemIsFocusable);
+        joueurs[i]->setZValue(5);
         scene->addItem(joueurs[i]);
     }
-    joueurs[0]->setFocus();
+    joueurs[0]->setFocus(); //init au premier joueur arbitrairement pour l'instant
 
     terrain = new Terrain();
     terrain->initObstacles(scene);
@@ -66,12 +58,12 @@ Jeu::Jeu() : QWidget()
 
     angleH->setMaximum(359);
     angleV->setMaximum(89);
-    connect(angleH, SIGNAL(valueChanged(int)), this, SLOT(sliderValue(int)));
-    connect(angleV, SIGNAL(valueChanged(int)), this, SLOT(sliderValue(int)));
+    connect(angleH, SIGNAL(valueChanged(int)), joueurs[0], SLOT(modifPivot(int))); //car c'est le joueur ayant le focus
+    connect(angleV, SIGNAL(valueChanged(int)), joueurs[0], SLOT(modifAngle(int)));
 
-    connect(obus1, SIGNAL(pressed()), this, SLOT(boutonObus()));
-    connect(obus2, SIGNAL(pressed()), this, SLOT(boutonObus()));
-    connect(obus3, SIGNAL(pressed()), this, SLOT(boutonObus()));
+    connect(obus1, SIGNAL(pressed()), joueurs[0], SLOT(tirerObus1()));
+    connect(obus2, SIGNAL(pressed()), joueurs[0], SLOT(tirerObus2()));
+    connect(obus3, SIGNAL(pressed()), joueurs[0], SLOT(tirerObus3()));
 
 
 }

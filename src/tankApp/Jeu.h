@@ -35,10 +35,6 @@ private:
     QPushButton *obus2;
     QPushButton *obus3;
 
-public slots:
-    void sliderValue(int k);
-    void boutonObus();
-
 public:
     Jeu();
     ~Jeu();

@@ -2,6 +2,7 @@
 #define OBSTACLE_H
 
 #include "Point.h"
+#include "Obus.h"
 
 #include <QGraphicsItem>
 #include <QRectF>
@@ -28,6 +29,9 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
     QPainterPath shape() const;
+    TypeObstacle getType() const;
+
+    friend class Obus;
 };
 
 #endif // OBSTACLE_H

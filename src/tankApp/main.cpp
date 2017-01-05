@@ -1,8 +1,7 @@
 #include <QApplication>
+#include "def.h"
 #include "Jeu.h"
 #include "Heightmap.h"
-
-Jeu *jeu;
 
 /*!
  * \file main.cpp
@@ -15,7 +14,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    jeu = new Jeu();
+    Jeu *jeu = new Jeu();
     jeu->show();
 
     return a.exec();

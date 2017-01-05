@@ -73,3 +73,8 @@ QPainterPath Obstacle::shape() const
     path.addEllipse(boundingRect());
     return path;
 }
+
+TypeObstacle Obstacle::getType() const
+{
+    return type;
+}

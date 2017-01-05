@@ -1,14 +1,35 @@
 #include "Tank.h"
 
-Tank::Tank(/*int X, int Y,*/ QGraphicsItem *parent) : QGraphicsItem(parent){
+void Tank::setCanonPivot(int newPivot)
+{
+    tankCanonPivot = newPivot;
+}
+
+void Tank::setCanonAngle(int newAngle)
+{
+    tankCanonAngle = newAngle;
+}
+
+QPointF Tank::qtimpactpos()
+{
+    Segment trajectoire(Point(scenePos().x() + 10, scenePos().y() + 10), tankCanonPivot, tankCanonAngle);
+    return QPointF(trajectoire.getp2().getx(), trajectoire.getp2().gety());
+}
+
+Point Tank::impactpos()
+{
+    Segment trajectoire(Point(scenePos().x() + 10, scenePos().y() + 10), tankCanonPivot, tankCanonAngle);
+    return Point(trajectoire.getp2().getx(), trajectoire.getp2().gety());
+}
+
+Tank::Tank(QGraphicsItem *parent) : QGraphicsItem(parent){
     tankEtat = true;
     tankCapDeplacement = LARGEUR / 10;
-    tankCanonAngle = 90;
+    tankCanonAngle = 0;
     tankCanonPivot = 0;
     tankNbrObusT2 = 10;
     tankNbrObusT3 = 5;
     vertical = true;
-    //setPos(X, Y);
 }
 
 QRectF Tank::boundingRect() const{
@@ -52,9 +73,15 @@ bool Tank::canMove(QKeyEvent *event)
         liste = new QMutableListIterator<QGraphicsItem *>(collisions);
         while (liste->hasNext()) {
             QGraphicsItem *tmp = liste->next();
+            if(typeid(*tmp) == typeid(Obstacle)) {
+                Obstacle *obs = (Obstacle *) tmp;
+                if(obs->getType() == CREVASSE1 || obs->getType() == CREVASSE2 || obs->getType() == CREVASSE3)
+                    liste->remove();
+            }
             if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
                 liste->remove();
         }
+
         if(!collisions.empty() || scenePos().x() < 0)
             libre = false;
 
@@ -69,6 +96,11 @@ bool Tank::canMove(QKeyEvent *event)
         liste = new QMutableListIterator<QGraphicsItem *>(collisions);
         while (liste->hasNext()) {
             QGraphicsItem *tmp = liste->next();
+            if(typeid(*tmp) == typeid(Obstacle)) {
+                Obstacle *obs = (Obstacle *) tmp;
+                if(obs->getType() == CREVASSE1 || obs->getType() == CREVASSE2 || obs->getType() == CREVASSE3)
+                    liste->remove();
+            }
             if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
                 liste->remove();
         }
@@ -86,6 +118,11 @@ bool Tank::canMove(QKeyEvent *event)
         liste = new QMutableListIterator<QGraphicsItem *>(collisions);
         while (liste->hasNext()) {
             QGraphicsItem *tmp = liste->next();
+            if(typeid(*tmp) == typeid(Obstacle)) {
+                Obstacle *obs = (Obstacle *) tmp;
+                if(obs->getType() == CREVASSE1 || obs->getType() == CREVASSE2 || obs->getType() == CREVASSE3)
+                    liste->remove();
+            }
             if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
                 liste->remove();
         }
@@ -104,6 +141,11 @@ bool Tank::canMove(QKeyEvent *event)
         liste = new QMutableListIterator<QGraphicsItem *>(collisions);
         while (liste->hasNext()) {
             QGraphicsItem *tmp = liste->next();
+            if(typeid(*tmp) == typeid(Obstacle)) {
+                Obstacle *obs = (Obstacle *) tmp;
+                if(obs->getType() == CREVASSE1 || obs->getType() == CREVASSE2 || obs->getType() == CREVASSE3)
+                    liste->remove();
+            }
             if (typeid(*tmp) != typeid(Obstacle) && typeid(*tmp) != typeid(Tank))
                 liste->remove();
         }

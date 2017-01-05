@@ -11,3 +11,12 @@ Infos::Infos(Tank *t, QGraphicsItem *parent): QGraphicsTextItem(parent)
     setDefaultTextColor(Qt::black);
     setFont(QFont("arial",7));
 }
+
+void Infos::rewrite(Tank *t)
+{
+    setPlainText(QString::number(t->tankCapDeplacement) + ' ' +
+                 QString::number(t->tankNbrObusT2) + ' ' +
+                 QString::number(t->tankNbrObusT3) + ' ' +
+                 QString::number(t->tankCanonAngle) + ' ' +
+                 QString::number(t->tankCanonPivot));
+}

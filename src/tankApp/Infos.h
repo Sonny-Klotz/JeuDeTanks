@@ -13,6 +13,7 @@ class Infos : public QGraphicsTextItem
 {
 public:
     Infos(Tank *t, QGraphicsItem *parent = 0);
+    void rewrite(Tank *t);
 
     friend class Individu;
     friend class Ordinateur;

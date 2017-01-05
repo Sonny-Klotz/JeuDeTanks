@@ -17,12 +17,9 @@
 
 class Canon: public QGraphicsItem{
 private:
-    bool canonEtat; //Pour Le detruire en meme temps que le tank?
-
 
 public:
-    // comme dans tank ta l'airde plus utilisé setpose et les coordonnées, je te lesmets comme dans tank...
-    Canon(/*int X,int Y,*/ QGraphicsItem *parent = 0);
+    Canon(int X,int Y, QGraphicsItem *parent = 0);
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 

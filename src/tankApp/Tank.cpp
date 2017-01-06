@@ -16,6 +16,16 @@ QPointF Tank::qtimpactpos()
     return QPointF(trajectoire.getp2().getx(), trajectoire.getp2().gety());
 }
 
+bool Tank::getTankEtat() const
+{
+    return tankEtat;
+}
+
+void Tank::setTankEtat(bool newEtat)
+{
+    tankEtat = newEtat;
+}
+
 Point Tank::impactpos()
 {
     Segment trajectoire(Point(scenePos().x() + 10, scenePos().y() + 10), tankCanonPivot, tankCanonAngle);

@@ -3,12 +3,12 @@
 
 #include "Obstacle.h"
 #include "Point.h"
+#include "Tank.h"
 
 #include <QGraphicsItem>
 #include <QPainter>
 #include <QGraphicsScene>
 #include <QList>
-#include <QMutableListIterator>
 #include <typeinfo>
 
 class Obus : public QObject, public QGraphicsItem

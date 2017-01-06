@@ -15,5 +15,6 @@ class Terrain;
 class Infos;
 class Tank;
 class Individu;
+class Ordinateur;
 
 #endif // DEF_H

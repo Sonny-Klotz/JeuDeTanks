@@ -20,6 +20,15 @@ Obstacle::Obstacle(TypeObstacle type, Point posinit): pos(posinit), QGraphicsIte
 
 int Obstacle::getResistance() const{ return resistance; }
 
+void Obstacle::setResistance(int newResistance)
+{
+    if(type == ARBRE || type == ROCHER) {
+        resistance = newResistance;
+        if(resistance <= 0)
+            scene()->removeItem(this);
+   }
+}
+
 QRectF Obstacle::boundingRect() const
 {
     QRectF *rect;

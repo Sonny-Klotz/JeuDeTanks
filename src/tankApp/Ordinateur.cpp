@@ -8,7 +8,13 @@ Ordinateur::Ordinateur(Point posinit): QGraphicsItemGroup()
     addToGroup(tank);
 }
 
-void Ordinateur::jouerTour()
+void Ordinateur::jouerTour(Jeu *j)
 {
+    j->changerTourOrdi(0);
+    tank->tankCapDeplacement = LARGEUR / 10;
+}
 
+Tank *Ordinateur::getTank()
+{
+    return tank;
 }

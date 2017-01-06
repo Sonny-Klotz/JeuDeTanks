@@ -1,9 +1,38 @@
 #include "Jeu.h"
 
+void Jeu::changeTourObus1()
+{
+    joueurs[tour - NORDINATEURS]->tirerObus1();
+    changerTourOrdi(0);
+}
+
+void Jeu::changeTourObus2()
+{
+    joueurs[tour - NORDINATEURS]->tirerObus2();
+    changerTourOrdi(0);
+}
+
+void Jeu::changeTourObus3()
+{
+    joueurs[tour - NORDINATEURS]->tirerObus3();
+    changerTourOrdi(0);
+}
+/*
+void Jeu::redonneFocus()
+{
+    angleH->clearFocus();
+    angleV->clearFocus();
+
+    if(tour >= NORDINATEURS) {
+        joueurs[tour - NORDINATEURS]->setFocus();
+        qDebug() << joueurs[tour - NORDINATEURS]->hasFocus();
+    }
+}*/
+
 Jeu::Jeu() : QWidget()
 {
     srand(time(NULL));
-    //scene : carte avec obstacles et tanks
+
     scene = new QGraphicsScene(0, 0, LARGEUR, HAUTEUR);
 
     int x,y;
@@ -12,7 +41,6 @@ Jeu::Jeu() : QWidget()
         x = rand() % (LARGEUR - 20);
         y = rand() % (HAUTEUR - 20);
         ordinateurs[i] = new Ordinateur(Point(x, y));
-        ordinateurs[i]->setFlag(QGraphicsItem::ItemIsFocusable);
         ordinateurs[i]->setZValue(5);
         scene->addItem(ordinateurs[i]);
     }
@@ -25,7 +53,7 @@ Jeu::Jeu() : QWidget()
         joueurs[i]->setZValue(5);
         scene->addItem(joueurs[i]);
     }
-    joueurs[0]->setFocus(); //init au premier joueur arbitrairement pour l'instant
+    premierTour();
 
     terrain = new Terrain();
     terrain->initObstacles(scene);
@@ -58,13 +86,18 @@ Jeu::Jeu() : QWidget()
 
     angleH->setMaximum(359);
     angleV->setMaximum(89);
-    connect(angleH, SIGNAL(valueChanged(int)), joueurs[0], SLOT(modifPivot(int))); //car c'est le joueur ayant le focus
-    connect(angleV, SIGNAL(valueChanged(int)), joueurs[0], SLOT(modifAngle(int)));
 
-    connect(obus1, SIGNAL(pressed()), joueurs[0], SLOT(tirerObus1()));
-    connect(obus2, SIGNAL(pressed()), joueurs[0], SLOT(tirerObus2()));
-    connect(obus3, SIGNAL(pressed()), joueurs[0], SLOT(tirerObus3()));
+    for(int i = 0; i < NINDIVIDUS; i++) {
+        connect(angleH, SIGNAL(valueChanged(int)), joueurs[i], SLOT(modifPivot(int)));
+        connect(angleV, SIGNAL(valueChanged(int)), joueurs[i], SLOT(modifAngle(int)));
+    }
 
+    connect(obus1, SIGNAL(pressed()), this, SLOT(changeTourObus1()));
+    connect(obus2, SIGNAL(pressed()), this, SLOT(changeTourObus2()));
+    connect(obus3, SIGNAL(pressed()), this, SLOT(changeTourObus3()));
+/*
+    connect(angleH, SIGNAL(sliderReleased()), this, SLOT(redonneFocus()));
+    connect(angleV, SIGNAL(sliderReleased()), this, SLOT(redonneFocus())); */
 
 }
 
@@ -73,4 +106,36 @@ Jeu::~Jeu()
     delete terrain;
 }
 
+void Jeu::premierTour()
+{
+    tour = rand() % (NORDINATEURS + NINDIVIDUS);
 
+    if(tour < NORDINATEURS) {
+        ordinateurs[tour]->jouerTour(this);
+    }
+    else {
+        joueurs[tour - NORDINATEURS]->setFocus();
+        joueurs[tour - NORDINATEURS]->actif = true;
+    }
+}
+
+void Jeu::changerTourOrdi(int nbre)
+{
+    if(nbre == NORDINATEURS + NINDIVIDUS - 1) {
+        cout << "Fin de partie" << endl;
+        exit(EXIT_SUCCESS);
+    }
+
+    qDebug() << nbre;
+    tour = (tour + 1) % (NORDINATEURS + NINDIVIDUS);
+    if(tour < NORDINATEURS && ordinateurs[tour]->getTank()->getTankEtat()) {
+        ordinateurs[tour]->jouerTour(this);
+    }
+    else if(tour >= NORDINATEURS && joueurs[tour - NORDINATEURS]->getTank()->getTankEtat()){
+        joueurs[tour - NORDINATEURS]->setFocus();
+        joueurs[tour - NORDINATEURS]->actif = true;
+    }
+    else {
+        changerTourOrdi(++nbre);
+    }
+}

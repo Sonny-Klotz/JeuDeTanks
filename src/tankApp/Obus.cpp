@@ -75,5 +75,22 @@ Obus::~Obus(){
 
     obs->setZValue(qreal(0));
     scene()->addItem(obs);
+
+    QList<QGraphicsItem *> collisions;
+    collisions = scene()->collidingItems(obs);
+
+    for(int i = 0; i < collisions.size(); i++) {
+        if(typeid(*collisions[i]) == typeid(Tank)) {
+            scene()->removeItem(collisions[i]->parentItem());
+            Tank *tank = (Tank *) collisions[i];
+            tank->setTankEtat(false);
+        }
+        else if(typeid(*collisions[i]) == typeid(Obstacle)) {
+            Obstacle *obs = (Obstacle *) collisions[i];
+            if(typeObus == 1) obs->setResistance(obs->getResistance() - 2);
+            if(typeObus == 2) obs->setResistance(obs->getResistance() - 5);
+            if(typeObus == 3) obs->setResistance(obs->getResistance() - 10);
+        }
+    }
 }
 

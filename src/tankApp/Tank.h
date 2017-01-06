@@ -36,6 +36,8 @@ public:
     void setCanonAngle(int newAngle);
     Point impactpos();
     QPointF qtimpactpos();
+    bool getTankEtat() const;
+    void setTankEtat(bool newEtat);
 
     friend class Individu;
     friend class Ordinateur;

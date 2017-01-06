@@ -7,6 +7,7 @@
 #include "Terrain.h"
 #include "Tank.h"
 
+#include <QObject>
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -16,16 +17,21 @@
 #include <QVBoxLayout>
 #include <QBrush>
 #include <QColor>
+#include <iostream>
 #include <stdlib.h>
 #include <time.h>
 
 #include <QDebug>
+
+using std::cout;
+using std::endl;
 
 class Jeu : public QWidget
 {
     Q_OBJECT
 
 private:
+    int tour;
     Terrain *terrain;
     Ordinateur **ordinateurs;
     Individu **joueurs;
@@ -35,10 +41,18 @@ private:
     QPushButton *obus2;
     QPushButton *obus3;
 
+public slots:
+    void changeTourObus1();
+    void changeTourObus2();
+    void changeTourObus3();
+    //void redonneFocus();
+
 public:
     Jeu();
     ~Jeu();
     QGraphicsScene *scene;
+    void premierTour();
+    void changerTourOrdi(int nbre);
 };
 
 #endif // JEU_H

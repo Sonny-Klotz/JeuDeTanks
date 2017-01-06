@@ -15,19 +15,21 @@ class Individu : public QObject, public QGraphicsItemGroup
     Q_OBJECT
 
 private:
+    bool actif; //true si c'est son tour de jouer
     Tank *tank;
     Infos *infos;
 
 public slots:
     void modifPivot(int newPivot);
     void modifAngle(int newAngle);
-    void tirerObus1();
-    void tirerObus2();
-    void tirerObus3();
 
 public:
     Individu(Point posinit);
     void keyPressEvent(QKeyEvent * event);
+    void tirerObus1();
+    void tirerObus2();
+    void tirerObus3();
+    Tank *getTank();
 
     friend class Jeu;
 };

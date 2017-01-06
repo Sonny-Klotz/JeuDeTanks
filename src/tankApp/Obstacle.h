@@ -25,6 +25,7 @@ private:
 public:
     Obstacle(TypeObstacle type, Point posinit);
     int getResistance() const;
+    void setResistance(int newResistance);
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);

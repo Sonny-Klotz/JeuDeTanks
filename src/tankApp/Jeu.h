@@ -20,6 +20,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include <QThread>
 
 #include <QDebug>
 
@@ -52,7 +53,8 @@ public:
     ~Jeu();
     QGraphicsScene *scene;
     void premierTour();
-    void changerTourOrdi(int nbre);
+    void changerTourOrdi();
+    bool testFinPartie();
 };
 
 #endif // JEU_H

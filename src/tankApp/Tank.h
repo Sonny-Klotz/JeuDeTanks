@@ -5,6 +5,7 @@
 #include "Obstacle.h"
 #include "Infos.h"
 #include "Segment.h"
+#include "Canon.h"
 
 #include <QGraphicsItem>
 #include <QKeyEvent>
@@ -26,6 +27,7 @@ private:
     int tankNbrObusT2; //initialisé à 10
     int tankNbrObusT3; //initialisé à 5
     bool vertical; //verifie le sens du tank
+    Canon *canon;
 
 public:
     Tank(QGraphicsItem *parent = 0);

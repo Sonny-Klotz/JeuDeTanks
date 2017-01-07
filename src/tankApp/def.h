@@ -16,5 +16,6 @@ class Infos;
 class Tank;
 class Individu;
 class Ordinateur;
+class Canon;
 
 #endif // DEF_H

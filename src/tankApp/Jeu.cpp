@@ -3,22 +3,22 @@
 void Jeu::changeTourObus1()
 {
     joueurs[tour - NORDINATEURS]->tirerObus1();
-    changerTourOrdi(0);
+    changerTourOrdi();
 }
 
 void Jeu::changeTourObus2()
 {
     joueurs[tour - NORDINATEURS]->tirerObus2();
-    changerTourOrdi(0);
+    changerTourOrdi();
 }
 
 void Jeu::changeTourObus3()
 {
     joueurs[tour - NORDINATEURS]->tirerObus3();
-    changerTourOrdi(0);
+    changerTourOrdi();
 }
-/*
-void Jeu::redonneFocus()
+
+/*void Jeu::redonneFocus()
 {
     angleH->clearFocus();
     angleV->clearFocus();
@@ -111,7 +111,7 @@ void Jeu::premierTour()
     tour = rand() % (NORDINATEURS + NINDIVIDUS);
 
     if(tour < NORDINATEURS) {
-        ordinateurs[tour]->jouerTour(this);
+        ordinateurs[tour]->jouerTour();
     }
     else {
         joueurs[tour - NORDINATEURS]->setFocus();
@@ -119,23 +119,39 @@ void Jeu::premierTour()
     }
 }
 
-void Jeu::changerTourOrdi(int nbre)
+void Jeu::changerTourOrdi()
 {
-    if(nbre == NORDINATEURS + NINDIVIDUS - 1) {
+    if(testFinPartie()) {
         cout << "Fin de partie" << endl;
         exit(EXIT_SUCCESS);
     }
 
-    qDebug() << nbre;
     tour = (tour + 1) % (NORDINATEURS + NINDIVIDUS);
     if(tour < NORDINATEURS && ordinateurs[tour]->getTank()->getTankEtat()) {
-        ordinateurs[tour]->jouerTour(this);
+        ordinateurs[tour]->jouerTour();
+        QThread::sleep(2);
+        changerTourOrdi();
     }
     else if(tour >= NORDINATEURS && joueurs[tour - NORDINATEURS]->getTank()->getTankEtat()){
         joueurs[tour - NORDINATEURS]->setFocus();
         joueurs[tour - NORDINATEURS]->actif = true;
     }
     else {
-        changerTourOrdi(++nbre);
+        changerTourOrdi();
     }
+
+}
+
+bool Jeu::testFinPartie()
+{
+    int count = 0;
+
+    for(int i = 0; i < NORDINATEURS; i++) {
+        if(!ordinateurs[i]->getTank()->getTankEtat()) count++;
+    }
+    for(int i = 0; i < NINDIVIDUS; i++) {
+        if(!joueurs[i]->getTank()->getTankEtat()) count++;
+    }
+    qDebug() << count << NINDIVIDUS + NORDINATEURS - 1;
+    return (count == NINDIVIDUS + NORDINATEURS - 1) ? true : false;
 }

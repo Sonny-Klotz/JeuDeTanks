@@ -5,7 +5,12 @@
 #include "Tank.h"
 #include"Jeu.h"
 
+#include <QList>
 #include <QGraphicsItemGroup>
+#include <cmath>
+#include <typeinfo>
+#include <QTimer>
+#include <QObject>
 
 class Ordinateur : public QGraphicsItemGroup
 {
@@ -14,7 +19,7 @@ private:
 
 public:
     Ordinateur(Point posinit);
-    void jouerTour(Jeu *j);
+    void jouerTour();
     Tank *getTank();
 };
 

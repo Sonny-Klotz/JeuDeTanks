@@ -3,6 +3,7 @@
 void Tank::setCanonPivot(int newPivot)
 {
     tankCanonPivot = newPivot;
+    canon->setRotation(newPivot);
 }
 
 void Tank::setCanonAngle(int newAngle)
@@ -32,7 +33,7 @@ Point Tank::impactpos()
     return Point(trajectoire.getp2().getx(), trajectoire.getp2().gety());
 }
 
-Tank::Tank(QGraphicsItem *parent) : QGraphicsItem(parent){
+Tank::Tank(QGraphicsItem *parent) : QGraphicsItem(parent) {
     tankEtat = true;
     tankCapDeplacement = LARGEUR / 10;
     tankCanonAngle = 0;
@@ -40,6 +41,8 @@ Tank::Tank(QGraphicsItem *parent) : QGraphicsItem(parent){
     tankNbrObusT2 = 10;
     tankNbrObusT3 = 5;
     vertical = true;
+    canon = new Canon(x(), y(), this);
+    canon->setTransformOriginPoint(x() + 10, y() + 10);
 }
 
 QRectF Tank::boundingRect() const{
